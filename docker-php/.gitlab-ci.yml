@@ -1,0 +1,15 @@
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+
+stages:
+  - deploy
+
+docker-deploy:
+  image: docker/compose:alpine-1.29.1
+  stage: deploy
+  script:
+    - docker-compose down --rmi all
+    - docker-compose up -d sample-api-server
+  tags:
+    - runner

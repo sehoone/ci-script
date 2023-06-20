@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  
+  sample-api-server:
+    image: sample-api-server
+    container_name: sample-api-server
+    build:
+      context: .
+    ports:
+      - 4290:80
